@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HALLYU MARKET - Global K-Brand Shopping Mall</title>
+  <meta name="description" content="Discover authentic Korean products: K-Food, K-Beauty, K-Pop Albums & Goods, Idol-inspired Fashion & Accessories. Worldwide shipping.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <p>🌏 FREE Worldwide Shipping on Orders Over $80 | 전 세계 무료배송 $80 이상</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="/" class="logo">
+        <span class="logo-main">HALLYU</span>
+        <span class="logo-sub">MARKET</span>
+      </a>
+
+      <nav class="nav" id="mainNav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" data-category="all">Home</a>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="#" class="nav-link" data-category="k-food">K-Food</a>
+            <div class="dropdown">
+              <a href="#" data-subcategory="ramen">Ramen & Noodles</a>
+              <a href="#" data-subcategory="snacks">Snacks & Chips</a>
+              <a href="#" data-subcategory="sauce">Sauces & Seasonings</a>
+              <a href="#" data-subcategory="drinks">Beverages</a>
+              <a href="#" data-subcategory="traditional">Traditional Foods</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="#" class="nav-link" data-category="k-beauty">K-Beauty</a>
+            <div class="dropdown">
+              <a href="#" data-subcategory="skincare">Skincare</a>
+              <a href="#" data-subcategory="makeup">Makeup</a>
+              <a href="#" data-subcategory="masks">Sheet Masks</a>
+              <a href="#" data-subcategory="suncare">Sun Care</a>
+              <a href="#" data-subcategory="lipcare">Lip Care</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="#" class="nav-link" data-category="k-pop">K-Pop</a>
+            <div class="dropdown">
+              <a href="#" data-subcategory="albums">Albums</a>
+              <a href="#" data-subcategory="lightstick">Light Sticks</a>
+              <a href="#" data-subcategory="photocard">Photocards</a>
+              <a href="#" data-subcategory="poster">Posters & Prints</a>
+              <a href="#" data-subcategory="merch">Official Merch</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="#" class="nav-link" data-category="k-fashion">K-Fashion</a>
+            <div class="dropdown">
+              <a href="#" data-subcategory="idol-style">Idol Style Clothing</a>
+              <a href="#" data-subcategory="streetwear">Korean Streetwear</a>
+              <a href="#" data-subcategory="accessories">Accessories</a>
+              <a href="#" data-subcategory="bags">Bags & Wallets</a>
+              <a href="#" data-subcategory="jewelry">Jewelry</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="action-btn search-btn" id="searchBtn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="action-btn" id="langBtn" aria-label="Language">
+          <span class="lang-text">EN</span>
+        </button>
+        <button class="action-btn wishlist-btn" id="wishlistBtn" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="badge wishlist-count" style="display:none">0</span>
+        </button>
+        <button class="action-btn cart-btn" id="cartBtn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="badge cart-count" style="display:none">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search for K-Beauty, BTS Album, Tteokbokki...">
+      <button class="search-close" id="searchClose">&times;</button>
+    </div>
+    <div class="search-suggestions">
+      <h4>Popular Searches</h4>
+      <div class="suggestion-tags">
+        <span class="tag">BTS Album</span>
+        <span class="tag">Sheet Mask</span>
+        <span class="tag">Buldak Ramen</span>
+        <span class="tag">BLACKPINK Merch</span>
+        <span class="tag">Gochujang</span>
+        <span class="tag">Idol Outfit</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-slider">
+      <div class="hero-slide active" data-slide="0">
+        <div class="hero-bg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></div>
+        <div class="container hero-content">
+          <span class="hero-badge">NEW ARRIVAL</span>
+          <h1 class="hero-title">Discover<br><em>Authentic Korea</em></h1>
+          <p class="hero-desc">From Seoul to your doorstep. Explore the best of K-Culture with curated collections of food, beauty, music, and fashion.</p>
+          <div class="hero-actions">
+            <a href="#products" class="btn btn-primary">Shop Now</a>
+            <a href="#categories" class="btn btn-outline">Explore Categories</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-slide" data-slide="1">
+        <div class="hero-bg" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></div>
+        <div class="container hero-content">
+          <span class="hero-badge">K-POP</span>
+          <h1 class="hero-title">Latest<br><em>K-Pop Albums</em></h1>
+          <p class="hero-desc">Pre-order the hottest albums, collect exclusive photocards, and get official merchandise from your favorite artists.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary" data-category="k-pop">Shop K-Pop</a>
+            <a href="#" class="btn btn-outline">View All Artists</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-slide" data-slide="2">
+        <div class="hero-bg" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></div>
+        <div class="container hero-content">
+          <span class="hero-badge">K-BEAUTY</span>
+          <h1 class="hero-title">Glass Skin<br><em>Secrets</em></h1>
+          <p class="hero-desc">Unlock the Korean skincare routine with top-rated products from brands loved by idols and beauty enthusiasts worldwide.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary" data-category="k-beauty">Shop K-Beauty</a>
+            <a href="#" class="btn btn-outline">Skincare Guide</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <button class="dot active" data-slide="0"></button>
+      <button class="dot" data-slide="1"></button>
+      <button class="dot" data-slide="2"></button>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <section class="trust-bar">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <div>
+          <strong>Worldwide Shipping</strong>
+          <span>To 100+ Countries</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div>
+          <strong>100% Authentic</strong>
+          <span>Direct from Korea</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <div>
+          <strong>24/7 Support</strong>
+          <span>EN / KR / JP / CN</span>
+        </div>
+      </div>
+      <div class="trust-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <div>
+          <strong>Best Prices</strong>
+          <span>Price Match Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-desc">Explore the best of Korean culture, from delicious food to the latest idol trends</p>
+      </div>
+      <div class="category-grid">
+        <a href="#" class="category-card" data-category="k-food">
+          <div class="category-icon" style="background: linear-gradient(135deg, #ff9a56, #ff6b6b)">
+            <span>🍜</span>
+          </div>
+          <h3>K-Food</h3>
+          <p>Ramen, Snacks, Sauces & More</p>
+          <span class="category-count">150+ Products</span>
+        </a>
+        <a href="#" class="category-card" data-category="k-beauty">
+          <div class="category-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c)">
+            <span>✨</span>
+          </div>
+          <h3>K-Beauty</h3>
+          <p>Skincare, Makeup & Masks</p>
+          <span class="category-count">200+ Products</span>
+        </a>
+        <a href="#" class="category-card" data-category="k-pop">
+          <div class="category-icon" style="background: linear-gradient(135deg, #667eea, #764ba2)">
+            <span>🎵</span>
+          </div>
+          <h3>K-Pop Albums & Goods</h3>
+          <p>Albums, Lightsticks, Photocards</p>
+          <span class="category-count">300+ Products</span>
+        </a>
+        <a href="#" class="category-card" data-category="k-fashion">
+          <div class="category-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe)">
+            <span>👗</span>
+          </div>
+          <h3>K-Fashion</h3>
+          <p>Idol-Style Clothing & Accessories</p>
+          <span class="category-count">250+ Products</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Trending Now</h2>
+        <p class="section-desc">Most loved products this week</p>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="k-food">K-Food</button>
+        <button class="filter-btn" data-filter="k-beauty">K-Beauty</button>
+        <button class="filter-btn" data-filter="k-pop">K-Pop</button>
+        <button class="filter-btn" data-filter="k-fashion">K-Fashion</button>
+      </div>
+      <div class="products-grid" id="productsGrid">
+        <!-- Products injected by JS -->
+      </div>
+      <div class="load-more-wrap">
+        <button class="btn btn-outline" id="loadMoreBtn">Load More Products</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Idol Style Lookbook -->
+  <section class="lookbook" id="lookbook">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Idol Style Lookbook</h2>
+        <p class="section-desc">Get the look inspired by your favorite K-Pop stars</p>
+      </div>
+      <div class="lookbook-grid">
+        <div class="lookbook-card">
+          <div class="lookbook-image" style="background: linear-gradient(45deg, #1a1a2e, #16213e)">
+            <div class="lookbook-overlay">
+              <span class="lookbook-tag">Street Style</span>
+              <h3>Oversized Hoodie<br>& Cargo Pants</h3>
+              <p>Inspired by airport fashion trends</p>
+              <button class="btn btn-primary btn-sm" data-action="shop-look">Shop This Look</button>
+            </div>
+          </div>
+        </div>
+        <div class="lookbook-card">
+          <div class="lookbook-image" style="background: linear-gradient(45deg, #2d1b69, #11998e)">
+            <div class="lookbook-overlay">
+              <span class="lookbook-tag">Stage Concept</span>
+              <h3>Y2K Retro<br>Glam</h3>
+              <p>Concert-inspired bold outfits</p>
+              <button class="btn btn-primary btn-sm" data-action="shop-look">Shop This Look</button>
+            </div>
+          </div>
+        </div>
+        <div class="lookbook-card">
+          <div class="lookbook-image" style="background: linear-gradient(45deg, #c31432, #240b36)">
+            <div class="lookbook-overlay">
+              <span class="lookbook-tag">Casual Chic</span>
+              <h3>Minimal Korean<br>Aesthetic</h3>
+              <p>Clean lines and neutral tones</p>
+              <button class="btn btn-primary btn-sm" data-action="shop-look">Shop This Look</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Offers Banner -->
+  <section class="promo-banner">
+    <div class="container">
+      <div class="promo-content">
+        <div class="promo-text">
+          <span class="promo-badge">LIMITED TIME</span>
+          <h2>K-Beauty Box</h2>
+          <p>10-piece curated skincare set featuring top Korean brands. Save 40% on your glass skin journey.</p>
+          <div class="promo-price">
+            <span class="price-old">$89.99</span>
+            <span class="price-new">$53.99</span>
+          </div>
+          <button class="btn btn-primary" data-product-id="beauty-box-01">Add to Cart</button>
+        </div>
+        <div class="promo-visual">
+          <div class="promo-circle">
+            <span class="promo-discount">-40%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals K-Pop -->
+  <section class="new-arrivals">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">New K-Pop Arrivals</h2>
+        <p class="section-desc">Pre-order the latest albums and exclusive merchandise</p>
+      </div>
+      <div class="arrivals-scroll" id="arrivalsScroll">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-desc">Trusted by K-Culture fans worldwide</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The albums arrived in perfect condition with all the photocards included. Shipping to the US was surprisingly fast!"</p>
+          <div class="review-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <strong>Sarah M.</strong>
+              <span>New York, USA</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Best place to get authentic Korean skincare. The COSRX snail mucin changed my skin completely. Will order again!"</p>
+          <div class="review-author">
+            <div class="author-avatar">E</div>
+            <div>
+              <strong>Emma L.</strong>
+              <span>London, UK</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The idol-style jacket I ordered looks exactly like the one worn in the MV. Amazing quality and the accessories are so cute!"</p>
+          <div class="review-author">
+            <div class="author-avatar">Y</div>
+            <div>
+              <strong>Yuki T.</strong>
+              <span>Tokyo, Japan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <h2>Stay in the Hallyu Loop</h2>
+        <p>Get early access to new arrivals, exclusive drops, and special K-deals. Be the first to know.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <span class="newsletter-note">Join 50,000+ K-Culture fans. Unsubscribe anytime.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-main">HALLYU</span>
+            <span class="logo-sub">MARKET</span>
+          </a>
+          <p>Your gateway to authentic Korean culture. From Seoul with love, delivered worldwide.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+            <a href="#" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78 2.92 2.92 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.57 6.33 6.33 0 0 0 9.37 22a6.33 6.33 0 0 0 6.37-6.22V9.4a8.16 8.16 0 0 0 3.85.96V7.64a4.85 4.85 0 0 1-1.77-.72l.77-.23z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">K-Food</a></li>
+            <li><a href="#">K-Beauty</a></li>
+            <li><a href="#">K-Pop Albums</a></li>
+            <li><a href="#">K-Pop Goods</a></li>
+            <li><a href="#">K-Fashion</a></li>
+            <li><a href="#">New Arrivals</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>About</h4>
+          <ul>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 HALLYU MARKET. All rights reserved. | Made with ♥ in Seoul</p>
+        <div class="payment-icons">
+          <span>Visa</span>
+          <span>Mastercard</span>
+          <span>PayPal</span>
+          <span>Apple Pay</span>
+          <span>카카오페이</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Shopping Cart</h3>
+      <button class="cart-close" id="cartClose">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <p>Your cart is empty</p>
+        <span>Add some Korean goodies!</span>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <p class="cart-shipping-note">Shipping calculated at checkout</p>
+      <button class="btn btn-primary btn-full" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span id="toastMessage"></span>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

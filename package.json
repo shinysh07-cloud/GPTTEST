@@ -1,0 +1,12 @@
+{
+  "name": "k-brand-global-mall",
+  "version": "1.0.0",
+  "description": "Global K-Brand Shopping Mall - K-Food, K-Beauty, K-Pop, K-Fashion",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server --port=3000"
+  },
+  "keywords": ["k-brand", "korean", "shopping", "k-pop", "k-beauty", "k-food"],
+  "license": "MIT"
+}
