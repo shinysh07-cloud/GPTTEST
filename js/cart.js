@@ -1,5 +1,5 @@
 // ============================================
-// HALLYU MARKET - Shopping Cart Module
+// KHARA 케이하라 - Shopping Cart Module
 // ============================================
 
 class ShoppingCart {

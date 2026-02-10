@@ -1,5 +1,5 @@
 // ============================================
-// HALLYU MARKET - Product Data
+// KHARA 케이하라 - Product Data
 // ============================================
 
 const PRODUCTS = [

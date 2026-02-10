@@ -1,5 +1,5 @@
 // ============================================
-// HALLYU MARKET - Main Application
+// KHARA 케이하라 - Premium Korean Culture Store
 // ============================================
 
 (function() {
@@ -186,9 +186,11 @@
     if (cart.items.length === 0) {
       cartItemsEl.innerHTML = `
         <div class="cart-empty">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <p>Your cart is empty</p>
-          <span>Add some Korean goodies!</span>
+          <div class="cart-empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <p>장바구니가 비어있습니다</p>
+          <span>Your cart is empty — add some Korean goodies!</span>
         </div>`;
       cartFooter.style.display = 'none';
       return;
@@ -395,14 +397,14 @@
 
     // Checkout button
     $('#checkoutBtn').addEventListener('click', () => {
-      showToast('Checkout coming soon! Thank you for shopping.');
+      showToast('결제 기능 준비 중입니다. Coming soon! 감사합니다.');
       closeCart();
     });
 
     // Newsletter
     $('#newsletterForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      showToast('Welcome to Hallyu Market! Check your email.');
+      showToast('KHARA 가족이 되신 것을 환영합니다! Welcome to KHARA!');
       e.target.reset();
     });
 
@@ -454,14 +456,25 @@
   function startHeroSlider() {
     let current = 0;
     const slides = $$('.hero-slide');
-    const dots = $$('.hero-dots .dot');
+    const dots = $$('.hero-nav .hero-dot');
+    const progressBars = $$('.hero-progress-bar');
 
     function goTo(index) {
       slides.forEach(s => s.classList.remove('active'));
       dots.forEach(d => d.classList.remove('active'));
+      progressBars.forEach(bar => { bar.style.transition = 'none'; bar.style.width = '0%'; });
+
       slides[index].classList.add('active');
       dots[index].classList.add('active');
       current = index;
+
+      // Animate progress bar after current dot
+      if (progressBars[index]) {
+        setTimeout(() => {
+          progressBars[index].style.transition = 'width 5s linear';
+          progressBars[index].style.width = '100%';
+        }, 50);
+      }
     }
 
     dots.forEach(dot => {
@@ -469,6 +482,8 @@
         goTo(parseInt(dot.dataset.slide));
       });
     });
+
+    goTo(0);
 
     setInterval(() => {
       goTo((current + 1) % slides.length);
