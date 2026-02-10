@@ -1,12 +1,18 @@
 {
-  "name": "k-brand-global-mall",
+  "name": "khara-global-mall",
   "version": "1.0.0",
-  "description": "Global K-Brand Shopping Mall - K-Food, K-Beauty, K-Pop, K-Fashion",
-  "main": "index.html",
+  "description": "KHARA 케이하라 - Premium Korean Culture Store with Stripe/PayPal",
+  "main": "server/index.js",
   "scripts": {
-    "start": "npx serve .",
-    "dev": "npx live-server --port=3000"
+    "start": "node server/index.js",
+    "dev": "node server/index.js"
   },
-  "keywords": ["k-brand", "korean", "shopping", "k-pop", "k-beauty", "k-food"],
-  "license": "MIT"
+  "keywords": ["k-brand", "korean", "shopping", "k-pop", "k-beauty", "k-food", "stripe", "paypal"],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "stripe": "^17.5.0"
+  }
 }

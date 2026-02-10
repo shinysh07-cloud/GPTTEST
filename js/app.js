@@ -395,10 +395,13 @@
       });
     }
 
-    // Checkout button
+    // Checkout button - navigate to checkout page
     $('#checkoutBtn').addEventListener('click', () => {
-      showToast('결제 기능 준비 중입니다. Coming soon! 감사합니다.');
-      closeCart();
+      if (cart.items.length > 0) {
+        window.location.href = '/pages/checkout.html';
+      } else {
+        showToast('장바구니가 비어있습니다. Cart is empty.');
+      }
     });
 
     // Newsletter

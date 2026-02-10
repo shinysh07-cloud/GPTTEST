@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed 주문완료 | KHARA 케이하라</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Cormorant+Garamond:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .success-page {
+      min-height: 100vh;
+      background: var(--khara-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-container {
+      max-width: 560px;
+      width: 100%;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--k-mint);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    .success-icon svg {
+      color: var(--khara-black);
+    }
+
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--khara-pure-white);
+      margin-bottom: 8px;
+    }
+
+    .success-title-kr {
+      font-size: 1rem;
+      color: var(--k-pink);
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+    }
+
+    .success-message {
+      font-size: 0.95rem;
+      color: var(--khara-text);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .success-order-box {
+      background: var(--khara-card);
+      border: 1px solid var(--khara-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .order-detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 0.85rem;
+    }
+
+    .order-detail-row span:first-child {
+      color: var(--khara-text);
+    }
+
+    .order-detail-row span:last-child {
+      color: var(--khara-pure-white);
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+
+    .success-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .success-logo {
+      display: inline-flex;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-page">
+    <div class="success-container">
+      <a href="/" class="logo success-logo">
+        <div class="logo-mark">K</div>
+        <div class="logo-text">
+          <span class="logo-main">KHARA</span>
+          <span class="logo-sub">케이하라</span>
+        </div>
+      </a>
+
+      <div class="success-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+
+      <h1 class="success-title">Order Confirmed!</h1>
+      <p class="success-title-kr">주문이 완료되었습니다</p>
+
+      <p class="success-message">
+        감사합니다! 주문 확인 이메일이 곧 발송됩니다.<br>
+        Thank you for shopping at KHARA! A confirmation email is on its way.<br>
+        Your Korean goodies will be shipped from Seoul with love.
+      </p>
+
+      <div class="success-order-box" id="orderDetails">
+        <div class="order-detail-row">
+          <span>Order ID 주문번호</span>
+          <span id="orderId">Loading...</span>
+        </div>
+        <div class="order-detail-row">
+          <span>Status 상태</span>
+          <span style="color: var(--k-mint);">✓ Confirmed 확인됨</span>
+        </div>
+        <div class="order-detail-row">
+          <span>Shipping 배송</span>
+          <span>7-14 Business Days</span>
+        </div>
+      </div>
+
+      <div class="success-actions">
+        <a href="/" class="btn btn-primary">
+          <span>Continue Shopping</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="/" class="btn btn-glass" style="border-color: var(--khara-border);">Track Order 배송조회</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Retrieve order details from Stripe session
+    (async function() {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get('session_id');
+      const orderId = document.getElementById('orderId');
+
+      if (sessionId) {
+        try {
+          const res = await fetch(`/api/checkout-session/${sessionId}`);
+          const session = await res.json();
+
+          orderId.textContent = session.payment_intent?.id?.slice(-12)?.toUpperCase() || sessionId.slice(-12).toUpperCase();
+
+          // Clear cart after successful payment
+          localStorage.removeItem('hallyu_cart');
+        } catch (err) {
+          orderId.textContent = sessionId.slice(-12).toUpperCase();
+        }
+      } else {
+        // PayPal or direct order
+        const paypalOrderId = params.get('order_id');
+        orderId.textContent = paypalOrderId || ('KH-' + Date.now().toString(36).toUpperCase());
+
+        // Clear cart
+        localStorage.removeItem('hallyu_cart');
+      }
+    })();
+  </script>
+</body>
+</html>
